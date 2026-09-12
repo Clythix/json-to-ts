@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clythix // JSON to TypeScript & Zod Converter</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Link to your external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">clythix // json-to-ts</div>
+    <div style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted);">Light Suite v1.0</div>
+  </header>
+
+  <main class="workspace">
+    <!-- Input Panel -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>Input JSON Payload</span>
+        <button class="btn" onclick="loadSample()">Load Sample</button>
+      </div>
+      <textarea id="jsonInput" placeholder="Paste your raw JSON here..." oninput="convertJson()">{
+  "id": 1,
+  "name": "Clythix Labs",
+  "active": true,
+  "tags": ["dev", "tools"],
+  "owner": {
+    "username": "admin",
+    "email": null
+  }
+}</textarea>
+    </div>
+
+    <!-- Output Panel -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>Generated TypeScript Interface</span>
+        <button class="btn" onclick="copyOutput()"><i class="fa-solid fa-copy"></i> Copy Code</button>
+      </div>
+      <pre id="tsOutput">// Output will appear here...</pre>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <!-- Link to your external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
