@@ -1,3 +1,5 @@
+// Author: Clythix Labs
+// Tool: JSON to TypeScript & Zod Converter
 let currentMode = 'ts'; // 'ts' or 'zod'
 let lastParsedJson = null;
 
@@ -78,11 +80,18 @@ function jsonToZod(obj) {
 }
 
 function convertJson() {
-  const input = document.getElementById('jsonInput').value;
+  const inputVal = document.getElementById('jsonInput').value;
   const outputEl = document.getElementById('codeOutput');
   
+  const lines = inputVal.split('\n').length;
+  const chars = inputVal.length;
+  const statsEl = document.getElementById('statsIndicator');
+  if (statsEl) {
+    statsEl.innerText = `${chars} chars | ${lines} lines`;
+  }
+
   try {
-    lastParsedJson = JSON.parse(input);
+    lastParsedJson = JSON.parse(inputVal);
     renderOutput();
   } catch (err) {
     outputEl.innerText = `// Error: Invalid JSON syntax\n// ${err.message}`;
@@ -121,9 +130,21 @@ function loadSample() {
   convertJson();
 }
 
+function clearWorkspace() {
+  document.getElementById('jsonInput').value = '';
+  convertJson();
+}
+
 function copyOutput() {
   const text = document.getElementById('codeOutput').innerText;
   navigator.clipboard.writeText(text);
+  
+  const copyBtn = document.querySelector('.panel-header .btn');
+  if (copyBtn) {
+    copyBtn.classList.add('btn-success-pulse');
+    setTimeout(() => copyBtn.classList.remove('btn-success-pulse'), 300);
+  }
+
   const toast = document.getElementById('toast');
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 1500);
