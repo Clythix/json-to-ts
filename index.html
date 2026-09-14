@@ -39,13 +39,16 @@
 }</textarea>
     </div>
 
-    <!-- Output Panel -->
+<!-- Output Panel -->
     <div class="panel">
       <div class="panel-header">
-        <span>Generated TypeScript Interface</span>
+        <div class="output-tabs">
+          <button class="tab-btn active" onclick="switchOutputMode('ts')">TypeScript</button>
+          <button class="tab-btn" onclick="switchOutputMode('zod')">Zod Schema</button>
+        </div>
         <button class="btn" onclick="copyOutput()"><i class="fa-solid fa-copy"></i> Copy Code</button>
       </div>
-      <pre id="tsOutput">// Output will appear here...</pre>
+      <pre id="codeOutput">// Output will appear here...</pre>
     </div>
   </main>
 
