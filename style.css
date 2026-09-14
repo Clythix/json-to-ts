@@ -148,3 +148,31 @@ textarea:focus {
   z-index: 1000;
 }
 .toast.show { opacity: 1; transform: translateY(0); }
+
+.output-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--code-bg);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  background: var(--surface);
+  color: var(--text-main);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
