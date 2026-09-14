@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clythix // JSON to TypeScript & Zod Converter</title>
+  <title>Clythix // JSON to TypeScript & Zod Converter Tool</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Link to your external CSS file -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,7 +24,13 @@
     <div class="panel">
       <div class="panel-header">
         <span>Input JSON Payload</span>
-        <button class="btn" onclick="loadSample()">Load Sample</button>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span id="statsIndicator" style="font-size: 0.7rem; color: var(--text-muted);">0 chars | 0 lines</span>
+          <div style="display: flex; gap: 6px;">
+            <button class="btn" style="padding: 2px 8px; font-size: 0.7rem;" onclick="clearWorkspace()">Clear</button>
+            <button class="btn" style="padding: 2px 8px; font-size: 0.7rem;" onclick="loadSample()">Sample</button>
+          </div>
+        </div>
       </div>
       <textarea id="jsonInput" placeholder="Paste your raw JSON here..." oninput="convertJson()">{
   "id": 1,
@@ -39,7 +44,7 @@
 }</textarea>
     </div>
 
-<!-- Output Panel -->
+    <!-- Output Panel -->
     <div class="panel">
       <div class="panel-header">
         <div class="output-tabs">
@@ -54,7 +59,6 @@
 
   <div class="toast" id="toast">Copied to clipboard!</div>
 
-  <!-- Link to your external JavaScript file -->
   <script src="script.js"></script>
 </body>
 </html>
